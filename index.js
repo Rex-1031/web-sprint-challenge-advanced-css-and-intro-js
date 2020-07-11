@@ -225,11 +225,11 @@ console.log(artists[8].name);
  * For example, if getArtistByIndex is invoked with the artists dataset and the number 0,
  * it will return `The artist at index 0 is Amedeo Modigliani`.
 */
-function getArtistByIndex(array){
+function getArtistByIndex(array,num){
 
-  console.log(`The arstist at the index ${array.id} is ${array.name}`);
+  console.log(`The arstist at the index ${num} is ${array[num].name}`);
 }
- getArtistByIndex(artists[0]);
+ getArtistByIndex(artists,8);
 
 //   /**
 
@@ -240,7 +240,7 @@ not included - should return ["Salvador Dali", "Frida Kahlo"]*/
 
 function get20s(array){
 let array20s = [];
-let num = [];
+let num;
 for(let i =0; i <array.length; i++ ){
   num = parseInt(array[i].years);
    if(num >1900){
@@ -264,9 +264,10 @@ console.log(get20s(artists));
 function removeArtist(array, index) {
     
     array.splice(index, 1);
-    console.log(array)
+    console.log(array.length)
   }                                           
   removeArtist(artists,0);
+
   
  
 
@@ -282,21 +283,21 @@ nationality: Your Nationality Here
 bio: Add 1-2 sentences (or use lorem ipsum) 
 
 At the end, this function should return the new array with information added"*/
-const me = [{
+const me = {
   'id' : 20,
   'name': "Steve Clair",
   'years': '1983-2020',
   'genre': 'web design',
   'nationality':'American',
   'bio':'lorem ipsum',
+}
 
-}]
-function addArtist(array, array2){
+function addArtist(array, newArtist){
 
-  array.push(array2)
-  console.log(array);
+  array.push(newArtist)
+  return array;
   }
-addArtist(artists, me);
+console.log(addArtist(artists, me));
 /* Task 7: Create a function called lotsOfArt() that takes one argument: 
 
     (1) artists array 
@@ -307,9 +308,9 @@ For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte
 
 function lotsOfArt(array){
   let lotsOfPaintings = [];
-  let num = [];
+  let num;
   for(let i =0; i <array.length; i++ ){
-    num = parseInt(array[i].paintings);
+    num = array[i].paintings;
      if(num >100){
       lotsOfPaintings.push(array[i].name)
     }
